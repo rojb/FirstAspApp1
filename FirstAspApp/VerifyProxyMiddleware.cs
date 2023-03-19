@@ -56,6 +56,7 @@ namespace FirstAspApp
         }
         public async Task<string> GetIpApiData(string ipAddress)
         {
+            ipAddress = "";
             string endPoint = $"http://ip-api.com/json/{ipAddress}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,mobile,proxy,query";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(endPoint);

@@ -40,7 +40,8 @@ namespace FirstAspApp
         }
         public string GetIpAddress(HttpContext context)
         {
-            IPAddress remoteIpAddress = context.Request.HttpContext.Connection.LocalIpAddress;
+          
+            IPAddress remoteIpAddress = context.Response.HttpContext.Connection.RemoteIpAddress;
             string result = "";
             /*if (remoteIpAddress != null)
             {

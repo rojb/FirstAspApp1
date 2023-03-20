@@ -41,7 +41,7 @@ namespace FirstAspApp
         public string GetIpAddress(HttpContext context)
         {
           
-            IPAddress remoteIpAddress = context.Response.HttpContext.Connection.RemoteIpAddress;
+            IPAddress remoteIpAddress = context.Connection.RemoteIpAddress.MapToIPv4();
             string result = "";
             /*if (remoteIpAddress != null)
             {

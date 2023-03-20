@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNetCore.Http.Features;
+using Newtonsoft.Json.Linq;
 using System.Net;
 namespace FirstAspApp
 {
@@ -40,8 +41,8 @@ namespace FirstAspApp
         }
         public string GetIpAddress(HttpContext context)
         {
-          
-            IPAddress remoteIpAddress = context.Connection.RemoteIpAddress.MapToIPv4();
+            var connection = context.Features.Get<IHttpConnectionFeature>();
+            var ipAddress = connection?.RemoteIpAddress;
             string result = "";
             /*if (remoteIpAddress != null)
             {
@@ -52,7 +53,7 @@ namespace FirstAspApp
                 }
 
             }*/
-                result = remoteIpAddress.ToString();
+                result = ipAddress.ToString();
             return result;
         }
         public async Task<string> GetIpApiData(string ipAddress)
